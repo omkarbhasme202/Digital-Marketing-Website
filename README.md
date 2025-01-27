@@ -3,8 +3,12 @@ A professional digital marketing website designed to showcase services such as S
 
 Features:
 
-Responsive Design: Optimized for mobile, tablet, and desktop.
-Services Section: Highlights digital marketing services offered.
-Portfolio: Showcases successful campaigns and client work.
-Contact Form: Enables users to reach out directly for inquiries.
+Responsive Design: Optimized for mobile, tablet, and desktop. 
+
+Services Section: Highlights digital marketing services offered. 
+
+Portfolio: Showcases successful campaigns and client work. 
+
+Contact Form: Enables users to reach out directly for inquiries. 
+
 SEO-Optimized: Designed with search engine best practices in mind.
