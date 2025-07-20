@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Contact Section Container */
+    .contact-section {
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .contact-section p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      animation: slideUp 1.5s ease;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #4e54c8;
+      outline: none;
+      box-shadow: 0 0 5px rgba(78, 84, 200, 0.5);
+    }
+
+    .contact-form button {
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #6c71ff;
+      transform: scale(1.05);
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .contact-section h2 {
+        font-size: 2em;
+      }
+
+      .contact-form {
+        padding: 15px 20px;
+      }
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* WhatsApp Icon Styling */
+    .whatsapp-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .whatsapp-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .whatsapp-icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Responsive for Smaller Screens */
+    @media (max-width: 768px) {
+      .whatsapp-icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      .whatsapp-icon img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+     <!-- WhatsApp Icon -->
+  <a href="https://wa.me/your-number" target="_blank" class="whatsapp-icon" title="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon">
+  </a>
+
+  
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you! Fill out the form below, and we’ll get back to you as soon as possible.</p>
+    <div class="contact-form">
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <span class="error" id="nameError">Please enter your name.</span>
+
+        <input type="email" id="email" placeholder="Your Email" required>
+        <span class="error" id="emailError">Please enter a valid email (e.g., test@atoz.com).</span>
+
+        <input type="text" id="mobile" placeholder="Your Mobile Number" maxlength="10" required>
+        <span class="error" id="mobileError">Please enter a valid 10-digit mobile number.</span>
+
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <span class="error" id="messageError">Please enter your message.</span>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    const form = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const mobileInput = document.getElementById('mobile');
+    const messageInput = document.getElementById('message');
+
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const mobileError = document.getElementById('mobileError');
+    const messageError = document.getElementById('messageError');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      let isValid = true;
+
+      // Validate Name
+      if (!nameInput.value.trim()) {
+        nameError.style.display = 'block';
+        isValid = false;
+      } else {
+        nameError.style.display = 'none';
+      }
+
+      // Validate Email
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailPattern.test(emailInput.value)) {
+        emailError.style.display = 'block';
+        isValid = false;
+      } else {
+        emailError.style.display = 'none';
+      }
+
+      // Validate Mobile
+      const mobilePattern = /^[0-9]{10}$/;
+      if (!mobilePattern.test(mobileInput.value)) {
+        mobileError.style.display = 'block';
+        isValid = false;
+      } else {
+        mobileError.style.display = 'none';
+      }
+
+      // Validate Message
+      if (!messageInput.value.trim()) {
+        messageError.style.display = 'block';
+        isValid = false;
+      } else {
+        messageError.style.display = 'none';
+      }
+
+      // If all validations pass
+      if (isValid) {
+        alert('Thank you! Your message has been sent.');
+        form.reset();
+      }
+    });
+  </script>
+
+<!DOCTYPE html>
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Footer Styling */
+    footer {
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: #fff;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    footer .footer-links a {
+      color: #ffdd59;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1em;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    footer .footer-links a:hover {
+      color: #fff;
+    }
+
+    footer .social-icons {
+      margin: 15px 0;
+    }
+
+    footer .social-icons a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #fff;
+      font-size: 1.5em;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    footer .social-icons a:hover {
+      color: #ffdd59;
+      transform: scale(1.1);
+    }
+
+    footer .contact-info {
+      margin: 15px 0;
+      font-size: 1em;
+    }
+
+    footer .contact-info a {
+      color: #ffdd59;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    footer .contact-info a:hover {
+      color: #fff;
+    }
+
+    footer .address {
+      margin: 15px 0;
+      font-size: 0.9em;
+    }
+
+    footer .copyright {
+      font-size: 0.85em;
+      margin-top: 15px;
+    }
+
+    /* Responsive Footer */
+    @media (max-width: 768px) {
+      footer {
+        padding: 20px 10px;
+      }
+
+      footer .footer-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      footer .footer-links a {
+        margin: 5px 0;
+      }
+
+      footer .social-icons a {
+        font-size: 1.3em;
+        margin: 8px 5px;
+      }
+
+      footer .contact-info {
+        font-size: 0.95em;
+      }
+
+      footer .address {
+        font-size: 0.85em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      footer {
+        padding: 15px 5px;
+      }
+
+      footer .social-icons a {
+        font-size: 1.2em;
+      }
+
+      footer .contact-info, footer .address {
+        font-size: 0.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Footer Section -->
+  <footer>
+    <!-- Links -->
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank" title="Facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="contact-info">
+      📞 Call us: <a href="tel:+912345678901">+91 23456 78901</a>
+    </div>
+
+    <!-- Address -->
+    <div class="address">
+      Address: Kamthe Patil Business Center, Pune
+    </div>
+
+    <!-- Copyright -->
+    <div class="copyright">
+      © Aarya Digital Edge | All Rights Reserved
+    </div>
+  </footer>
+
+  <!-- Font Awesome Script for Social Icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>
